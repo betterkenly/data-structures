@@ -9,7 +9,7 @@ var Tree = function(value) {
 };
 
 var treeMethods = {};
-debugger;
+
 treeMethods.addChild = function(value) {
 	var newChild = Tree(value);
 	this.children.push(newChild);
