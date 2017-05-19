@@ -48,14 +48,14 @@ HashTable.prototype.remove = function(k) {
   var currentSlot = this._storage.get(index);
   _.each(currentSlot,function(each, i){
   	if (each[0] === k) {
-  		currentSlot.pop(i);
+  		currentSlot.splice(i,1);
   	}
   });
 
 }
 // [ , , ,[[k,v],[k,v]] , , , ];
 var newHT = new HashTable();
-newHT.insert('Steven', 'Tyler');
+newHT.insert('Steven', 'Tyler'); r
 newHT.retrieve('Steven');
 // newHT.insert('Steven', 'fuck');
 // newHT.insert('Steven', 'Tyler');

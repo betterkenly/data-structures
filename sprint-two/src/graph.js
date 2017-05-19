@@ -19,11 +19,13 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-	this.node.pop(node);
-	this.edge.pop(node);
+	var i = this.node.indexOf(node);
+
+	this.node.splice(i,1);
+	this.edge.splice(node,1);
 	_.each(this.edge, function(each){
 		if (each.indexOf(node) >= 0){
-			each.pop(each.indexOf(node));
+			each.splice(each.indexOf(node),1);
 		}
 	});
 };
@@ -46,9 +48,9 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
 	var i = this.edge[fromNode].indexOf(toNode);
-	this.edge[fromNode].pop(i);
+	this.edge[fromNode].splice(i,1);
 	var j = this.edge[toNode].indexOf(fromNode);
-	this.edge[toNode].pop(j);
+	this.edge[toNode].splice(j,1);
 
 };
 

@@ -31,6 +31,7 @@ var queueMethods = {};
       return measure;
     }
   };
+//prototypal
 
 
 
