@@ -11,31 +11,26 @@ var Tree = function(value) {
 var treeMethods = {};
 debugger;
 treeMethods.addChild = function(value) {
-	var kid = Tree(value);
-	this.children.push(kid);
+	var newChild = Tree(value);
+	this.children.push(newChild);
 };
 // debugger;
 
 treeMethods.contains = function(target) {
-debugger;
-	var search = function(obj){
-		if( obj.value === target ){
+
+	var search = function(tree){
+		if (tree.value === target) {
 			return true;
 		}
-			for( var i = 0 ; i < obj.children.length ; i++ ){
-				var temp = search(obj.children[i]);
-				if(temp === true){
-					return true;
-				}
+		for (var i = 0 ; i < tree.children.length ; i++) {
+			var temp = search(tree.children[i]);
+			if (temp === true) {
+				return true;
 			}
-			return false;
-			// return false;
-	};
-	if(search(this)){
-		return true;
-	}else{
+		}
 		return false;
 	}
+	return search(this) === true? true: false;
 };
 
 
