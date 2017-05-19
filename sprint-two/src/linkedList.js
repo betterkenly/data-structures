@@ -36,9 +36,9 @@ var LinkedList = function() {
     // LinkedList.addToTail(4);
     //     LinkedList.addToTail(5);
 
-    var headNode = list.head;
+    // var headNode = list.head;
     var headValue = list.head.value;
-    list.head = headNode.next;
+    list.head = list.head.next;
     return headValue;
   };
   // {list.head.next : {  : {  : {    }}}}
@@ -55,7 +55,7 @@ var LinkedList = function() {
       }
       return search(node.next);
     }
-    return search(currentNode);
+   return search(currentNode);
 
     //check if the value = target   ----> if yes, return true;
     //check if the next node is null -----> if yes, return false;
