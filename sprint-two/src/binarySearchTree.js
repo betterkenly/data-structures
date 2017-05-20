@@ -1,5 +1,5 @@
 var BinarySearchTree = function(value) {
-	var someInstance = Object.create(binarySearchTree);
+	var someInstance = Object.create(binarySearchTreeMethod);
 	someInstance.value = value;
 	someInstance.left = null;
 	someInstance.right = null;
@@ -13,9 +13,9 @@ var BinarySearchTree = function(value) {
  * Complexity: What is the time complexity of the above functions?
  */
 //insert // contains // depthfirstlog
-var binarySearchTree = {};
+var binarySearchTreeMethod = {};
 
-binarySearchTree.insert = function(value) {
+binarySearchTreeMethod.insert = function(value) {
 	var newNode = BinarySearchTree(value);
 	var search = function(node) {
 		var currentNode = node;
@@ -36,58 +36,74 @@ binarySearchTree.insert = function(value) {
 	search(this);
 };
 
-binarySearchTree.contains = function(value) {
+binarySearchTreeMethod.contains = function(value) {
 	var search = function(node) {
 		var currentNode = node;
 		if (value === currentNode.value) {
 			return true;
 		}
-		if (value < currentNode.value && currentNode.left !== null) {
-			currentNode = currentNode.left;
-		}
 		if (value < currentNode.value && currentNode.left === null) {
 			return false;
-		}
-		if (value > currentNode.value && currentNode.right !== null) {
-			currentNode = currentNode.right;
 		}
 		if (value > currentNode.value && currentNode.right === null) {
 			return false;
 		}
-		search(currentNode);
+		if (value < currentNode.value && currentNode.left !== null) {
+			currentNode = currentNode.left;
+
+		}
+		if (value > currentNode.value && currentNode.right !== null) {
+			currentNode = currentNode.right;
+		}
+		
+		var temp = search(currentNode);
+		return temp;
+
+	}
+	return search(this);
+	// return result;
+};
+
+				// 20
+		  //   1       35
+		  //     6
+
+
+debugger;
+binarySearchTreeMethod.depthFirstLog= function(callback) {
+	callback(this.value);
+	var search = function(node) {
+		var currentNode = node;
+		var searchLeft = function(node){
+			var curr = node;
+			if(node.left) {
+				callback(node.left.value);
+				curr = node.left;
+				search(curr);
+			}
+		}
+		var searchRight = function(node) {
+			var curr = node;
+			if(node.right) {
+				callback(node.right.value);
+				curr = node.right;
+				search(curr);
+			}
+		}
+		searchLeft(currentNode);
+		searchRight(currentNode);
 	}
 	search(this);
 };
 
-binarySearchTree.depthFirstLog= function(callback) {
-	var apply = function(node){
-		var currentNode = node;
-		var leftNode;
-		var rightNode;
-		callback(node.value);
-		if (currentNode.right !== null) {
-			rightNode = currentNode.right;
-		}
-		if (currentNode.left !== null) {
-			leftNode = currentNode.left;
-		}
-		callback(leftNode);
-		callback(rightNode);
-		if (rightNode) {
-			apply(rightNode);
-		}
-		if (leftNode) {
-			apply(leftNode);
-		}
 
-	}
-};
 
-debugger;
+var result = [];
+var func = function(val) { result.push(val); };
 var binarySearchTree = new BinarySearchTree(20);
-binarySearchTree.insert(2);
-binarySearchTree.insert(3);
-binarySearchTree.contains(3);
+binarySearchTree.insert(1);
+binarySearchTree.insert(35);
+binarySearchTree.contains(35);
 binarySearchTree.insert(6);
-binarySearchTree.contains(7);
+binarySearchTree.depthFirstLog(func);
 
