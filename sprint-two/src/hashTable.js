@@ -5,7 +5,7 @@ var HashTable = function() {
   this._storage = LimitedArray(this._limit); //-->limitedArray;
   // this will eventually return an obj with prototype pro
 };
-debugger;
+
 HashTable.prototype.insert = function(k, v) {
   
   var index = getIndexBelowMaxForKey(k, this._limit);
@@ -21,7 +21,7 @@ HashTable.prototype.insert = function(k, v) {
 
 
 };
-debugger;
+
 HashTable.prototype.retrieve = function(k) {
   
   var index = getIndexBelowMaxForKey(k, this._limit);
@@ -41,7 +41,7 @@ HashTable.prototype.retrieve = function(k) {
 
 };
 
-debugger;
+
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
  ///[ , , [[k2,v2],[k1,v1]], ]; 
