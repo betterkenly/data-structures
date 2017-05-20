@@ -26,3 +26,6 @@ Stack.prototype.size = function() {
 }
 
 
+class {
+
+}
