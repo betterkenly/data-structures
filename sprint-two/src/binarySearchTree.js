@@ -20,19 +20,20 @@ binarySearchTreeMethod.insert = function(value) {
 	var newNode = BinarySearchTree(value);
 	var current = this;
 	while (current) {
-		if (value < this.value && !this.left) {
-			return this.left = newNode;
+		if (value < current.value && !current.left) {
+			return current.left = newNode;
 		}
-		if (value > this.value && !this.right) {
-			return this.right = newNode;
+		if (value > current.value && !current.right) {
+			return current.right = newNode;
 		}
-		if (value < this.value && this.left) {
-			current = this.left;
+		if (value < current.value && current.left) {
+			current = current.left;
 		}
-		if (value > this.value && this.right) {
-			current = this.right;
+		if (value > current.value && current.right) {
+			current = current.right;
 		}
-	}	
+	}
+
 //second-attempt
 	// var newNode = BinarySearchTree(value);
 	// if (value < this.value && !this.left) {
@@ -71,41 +72,41 @@ binarySearchTreeMethod.insert = function(value) {
 };
 
 binarySearchTreeMethod.contains = function(value) {
-	if (value === this.value) {
-		return true;
-	}
-	if (value < this.value && !this.left) {
-		return false;
-	}
-	if (value > this.value && !this.right) {
-		return false;
-	}
-	if (value < this.value && this.left) {
-		return this.left.contains(value);
-	}
-	if (value > this.value && this.right) {
-		return this.right.contains(value);
-	}
+	// if (value === this.value) {
+	// 	return true;
+	// }
+	// if (value < this.value && !this.left) {
+	// 	return false;
+	// }
+	// if (value > this.value && !this.right) {
+	// 	return false;
+	// }
+	// if (value < this.value && this.left) {
+	// 	return this.left.contains(value);
+	// }
+	// if (value > this.value && this.right) {
+	// 	return this.right.contains(value);
+	// }
 
 // second-attempt;
-	// var current = this;
-	// while (current) {
-	// 	if (current.value === value) {
-	// 		return true;
-	// 	}
-	// 	if (value < current.value && current.left) {
-	// 		current = current.left;
-	// 	} 
-	// 	if (value > current.value && current.right) {
-	// 		current = current.right;
-	// 	}
-	// 	if (value < current.value && !current.left) {
-	// 		return false;
-	// 	}
-	// 	if (value > current.value && !current.right) {
-	// 		return false;
-	// 	}
-	// } 
+	var current = this;
+	while (current) {
+		if (current.value === value) {
+			return true;
+		}
+		if (value < current.value && current.left) {
+			current = current.left;
+		} 
+		if (value > current.value && current.right) {
+			current = current.right;
+		}
+		if (value < current.value && !current.left) {
+			return false;
+		}
+		if (value > current.value && !current.right) {
+			return false;
+		}
+	} 
 
 // first-attempt;
 	// var search = function(node) {
@@ -139,7 +140,7 @@ binarySearchTreeMethod.contains = function(value) {
 
 
 
-binarySearchTreeMethod.depthFirstLog= function(callback) {
+binarySearchTreeMethod.depthFirstLog = function(callback) {
 
 	if (this.value) {
 		callback(this.value);

@@ -16,7 +16,16 @@ HashTable.prototype.insert = function(k, v) {
   	// currentSlot = [];
   	this._storage.set(index,[[k,v]]);
   }else{
-  	currentSlot.push([k,v]);
+    var exist = false;
+    for (var i = 0 ; i < currentSlot.length ; i++) {
+      if (currentSlot[i][0] === k) {
+        exist = true;
+        currentSlot[i] = [k,v];
+      }
+    }
+    if (!exist) {
+      currentSlot.push([k,v]);
+    }
   }
 
 
@@ -53,9 +62,11 @@ HashTable.prototype.remove = function(k) {
   });
 
 }
+debugger;
 // [ , , ,[[k,v],[k,v]] , , , ];
 var newHT = new HashTable();
-newHT.insert('Steven', 'Tyler'); r
+newHT.insert('Steven', 'Tyler'); 
+newHT.insert('Steven', 'fuck');
 newHT.retrieve('Steven');
 // newHT.insert('Steven', 'fuck');
 // newHT.insert('Steven', 'Tyler');
