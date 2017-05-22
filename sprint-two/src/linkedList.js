@@ -176,7 +176,7 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-debugger;
+
 var theList = LinkedList();
 theList.addToTail(9);
 theList.addToTail(10);
