@@ -64,7 +64,7 @@ treeMethods.traverse = function(callback){
 	// 2      3
  //  7       8   9
 
-debugger;
+// debugger;
 var tree = Tree(1);
 tree.addChild(2);
 tree.addChild(3);

@@ -62,7 +62,7 @@ HashTable.prototype.remove = function(k) {
   });
 
 }
-debugger;
+// debugger;
 // [ , , ,[[k,v],[k,v]] , , , ];
 var newHT = new HashTable();
 newHT.insert('Steven', 'Tyler'); 

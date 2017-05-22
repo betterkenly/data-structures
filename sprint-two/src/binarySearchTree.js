@@ -138,10 +138,42 @@ binarySearchTreeMethod.contains = function(value) {
 		  //   1       35
 		  //     6
 
-
+binarySearchTreeMethod.breadthFirstLog = function(callback) {
+ //     tree // insert(8,3,10,0,5,67,22,14,33);  should traverse in order 8,3,10,1,6,14,4,7,13
+ //      ----
+ //       j         <-- level 0
+ //     /   \
+ //    f      k     <-- level 1
+ //  /   \      \
+ // a     h      z  <-- level 2
+ //  \
+ //   d             <-- level 3
+ 	var queue = [];
+ 	queue.push(this);
+ 	var current;
+ 	while (queue.length) {
+ 		current = queue.splice(0,1)[0];   //<--- method splice will return array;
+ 		if (current.left) {
+ 			queue.push(current.left);
+ 		}
+ 		if (current.right) {
+ 			queue.push(current.right);
+ 		}
+ 	}
+};
 
 binarySearchTreeMethod.depthFirstLog = function(callback) {
 
+//       tree
+ //      ----
+ //       j    <-- root
+ //     /   \
+ //    f      k
+ //  /   \      \
+ // a     h      z
+ //  \
+ //   d
+ // in order of j,f,a,d,h,k,z
 	if (this.value) {
 		callback(this.value);
 	}
@@ -183,13 +215,26 @@ binarySearchTreeMethod.depthFirstLog = function(callback) {
 };
 
 
-
+debugger;
 var result = [];
 var func = function(val) { result.push(val); };
-var binarySearchTree = new BinarySearchTree(20);
-console.log(binarySearchTree.insert(1));
-binarySearchTree.insert(35);
-binarySearchTree.contains(35);
-binarySearchTree.insert(6);
-binarySearchTree.depthFirstLog(func);
+var binarySearchTree = new BinarySearchTree(8);
+// console.log(binarySearchTree.insert(1));
+// binarySearchTree.insert(35);
+// binarySearchTree.contains(35);
+// binarySearchTree.insert(6);
+// binarySearchTree.depthFirstLog(func);
+binarySearchTree.insert(3);
+binarySearchTree.insert(10);
+binarySearchTree.insert(67);
+binarySearchTree.insert(22);
+binarySearchTree.insert(14);
+binarySearchTree.insert(33);
+binarySearchTree.insert(0);
+binarySearchTree.insert(5);
+
+
+binarySearchTree.breadthFirstLog(func);
+console.log(result);
+
 
