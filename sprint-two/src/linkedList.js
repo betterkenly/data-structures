@@ -110,6 +110,23 @@ var LinkedList = function() {
     }
   }  
 
+  list.traverse = function(callback){
+
+    var current = list.head;
+    while (current) {
+      callback(current.value);
+      current = current.next;
+    } 
+  }
+
+  list.reversingTraversal = function(callback) {
+
+    var current = list.tail;
+    while (current) {
+      callback(current);
+      current = current.prev;
+    }
+  }
 
 
 
@@ -156,10 +173,6 @@ var LinkedList = function() {
 
   return list;
 };
-
-
-
-
 
 
 
