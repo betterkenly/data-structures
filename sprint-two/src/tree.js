@@ -53,7 +53,7 @@ treeMethods.removeFromParent = function(target){
 
 treeMethods.traverse = function(callback){
 	var search = function(tree){
-		callback(tree);
+		callback(tree.value);
 		for (var i = 0; i < tree.children.length ; i++) {
 			search(tree.children[i]);
 		}
@@ -73,6 +73,6 @@ tree.children[1].addChild(8);
 tree.children[1].addChild(9);
 // tree.removeFromParent(9);
 tree.contains(9);
-var func = function(x){ return x.value = x.value * 2};
+var func = function(x){ return x = x * 2};
 tree.traverse(func);
 console.log(tree.contains(18));
